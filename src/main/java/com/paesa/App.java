@@ -8,22 +8,30 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class App {
-    public static void main(final String[] args) {
-        readConfig();
-        final String[] lists = new String[] { "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" };
-        final Parser parser = new Parser(lists);
-        parser.generate();
-    }
 
     public static ArrayList<String> readConfig() {
+        ArrayList<String> lists = new ArrayList<String>();
+
         try {
-            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get("lists.conf")));
+            final ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get("lists.conf")));
             for (final String line : lines) {
+
+                // Remove commented lines
+                if (line.startsWith("#") || line.isEmpty()) {
+                    continue;
+                }
                 System.out.println(line);
             }
-            return lines;
         } catch (final Exception e) {
+            System.out.println(e);
         }
-        return null;
+
+        return lists;
+    }
+
+    public static void main(final String[] args) {
+        ArrayList<String> lists = readConfig();
+        final Parser parser = new Parser(lists);
+        parser.generate();
     }
 }

@@ -6,6 +6,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,11 +14,11 @@ import java.util.Set;
  * Parser retrieves and parses lists from sources and generate an unified list
  */
 public class Parser {
-    private final String[] sources;
+    private final ArrayList<String> sources;
     private final Set<String> list = new HashSet<String>();
     private static HttpClient client = HttpClient.newHttpClient();
 
-    public Parser(final String[] sources) {
+    public Parser(final ArrayList<String> sources) {
         this.sources = sources;
     }
 

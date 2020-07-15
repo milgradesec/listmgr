@@ -3,34 +3,12 @@
  */
 package com.paesa.listmgr;
 
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class App {
 
-    public static ArrayList<String> readConfig() {
-        ArrayList<String> lists = new ArrayList<String>();
-
-        try {
-            final ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get("lists.conf")));
-            for (final String line : lines) {
-
-                // Remove commented lines
-                if (line.startsWith("#") || line.isEmpty()) {
-                    continue;
-                }
-                System.out.println(line);
-            }
-        } catch (final Exception e) {
-            System.out.println(e);
-        }
-
-        return lists;
-    }
-
     public static void main(final String[] args) {
-        ArrayList<String> lists = readConfig();
+        ArrayList<String> lists = Config.read();
         final Parser parser = new Parser(lists);
         parser.generate();
     }

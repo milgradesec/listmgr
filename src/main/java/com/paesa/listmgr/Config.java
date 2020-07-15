@@ -18,7 +18,7 @@ public class Config {
                 }
             }
         } catch (final Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return lists;

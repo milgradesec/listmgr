@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Parser retrieves and parses lists from sources and generate an unified list
+ * Parser retrieves and parses lists from sources and generates an unified list
  */
 public class Parser {
     private final ArrayList<String> sources;

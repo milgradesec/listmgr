@@ -16,6 +16,7 @@ public class Config {
                 if (line.startsWith("#") || line.isEmpty()) {
                     continue;
                 }
+                lists.add(line);
             }
         } catch (final Exception e) {
             e.printStackTrace();

@@ -11,5 +11,6 @@ public class App {
         ArrayList<String> lists = Config.read();
         final Parser parser = new Parser(lists);
         parser.generate();
+        parser.writeToFile("blocklist.list");
     }
 }

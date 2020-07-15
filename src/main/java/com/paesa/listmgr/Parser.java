@@ -1,5 +1,6 @@
 package com.paesa.listmgr;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -35,7 +36,6 @@ public class Parser {
         try {
             System.out.println("Fetching " + url);
             final HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            System.out.println("Status Code: " + response.statusCode());
 
             System.out.println("Parsing " + url);
             parseResponse(response.body());
@@ -70,6 +70,16 @@ public class Parser {
             if (splits.length == 2) {
                 list.add(splits[1]);
             }
+        }
+    }
+
+    public void writeToFile(String file) {
+        try (FileWriter fw = new FileWriter(file)) {
+            for (String line : list) {
+                fw.write(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

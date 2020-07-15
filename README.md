@@ -1,5 +1,5 @@
 # list-manager
 
 ![CI](https://github.com/milgradesec/list-manager/workflows/CI/badge.svg)
-[![Code Coverage](https://img.shields.io/codecov/c/github/milgradesec/list-manager/master.svg)](https://codecov.io/github/milgradesec/list-manager?branch=master)
+[![Coverage](https://codecov.io/gh/milgradesec/list-manager/branch/master/graph/badge.svg)](https://codecov.io/gh/milgradesec/list-manager)
 ![License](https://img.shields.io/github/license/milgradesec/list-manager)

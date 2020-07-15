@@ -3,10 +3,27 @@
  */
 package com.paesa;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+
 public class App {
     public static void main(final String[] args) {
+        readConfig();
         final String[] lists = new String[] { "https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts" };
         final Parser parser = new Parser(lists);
         parser.generate();
+    }
+
+    public static ArrayList<String> readConfig() {
+        try {
+            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get("lists.conf")));
+            for (final String line : lines) {
+                System.out.println(line);
+            }
+            return lines;
+        } catch (final Exception e) {
+        }
+        return null;
     }
 }

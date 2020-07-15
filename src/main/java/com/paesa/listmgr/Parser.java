@@ -1,4 +1,4 @@
-package com.paesa;
+package com.paesa.listmgr;
 
 import java.io.IOException;
 import java.net.URI;

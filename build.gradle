@@ -15,7 +15,6 @@ plugins {
 }
 
 sourceCompatibility = '14'
-sourceCompatibility = '1.8'
 
 repositories {
     // Use jcenter for resolving dependencies.

@@ -5,11 +5,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Config {
-    public static ArrayList<String> read() {
+    public static ArrayList<String> read(String file) {
         final ArrayList<String> lists = new ArrayList<String>();
 
         try {
-            final ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get("lists.conf")));
+            final ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));
             for (final String line : lines) {
 
                 // Remove commented lines

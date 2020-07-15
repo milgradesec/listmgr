@@ -34,10 +34,8 @@ public class Parser {
         final HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
 
         try {
-            System.out.println("Fetching " + url);
+            System.out.println("Loading data from " + "[" + url + "]");
             final HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-
-            System.out.println("Parsing " + url);
             parseResponse(response.body());
 
         } catch (final IOException e) {
@@ -73,12 +71,12 @@ public class Parser {
         }
     }
 
-    public void writeToFile(String file) {
+    public void writeToFile(final String file) {
         try (FileWriter fw = new FileWriter(file)) {
-            for (String line : list) {
+            for (final String line : list) {
                 fw.write(line + "\n");
             }
-        } catch (IOException e) {
+        } catch (final IOException e) {
             e.printStackTrace();
         }
     }

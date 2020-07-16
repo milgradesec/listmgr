@@ -20,6 +20,7 @@ public class Parser {
 
     private static HttpClient client = HttpClient.newHttpClient();
     private final Matcher matcher;
+    private int matches;
 
     public Parser(final ArrayList<String> sources, final Matcher matcher) {
         this.sources = sources;
@@ -30,7 +31,8 @@ public class Parser {
         for (final String url : sources) {
             fetchAndParse(url);
         }
-        System.out.println(list.size());
+        System.out.println("Total size: " + list.size());
+        System.out.println("Filter matches: " + matches);
     }
 
     private void fetchAndParse(final String url) {
@@ -53,7 +55,6 @@ public class Parser {
         for (String line : lines) {
 
             if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
-                // System.out.println(line);
                 continue;
             }
 
@@ -68,10 +69,15 @@ public class Parser {
 
             // Split IP from name
             final String[] splits = line.split(" ");
-            if (splits.length == 2) {
-                addToList(splits[1]);
-            } else {
-                // System.out.println(line);
+            switch (splits.length) {
+                case 1:
+                    addToList(line);
+                    break;
+                case 2:
+                    addToList(splits[1]);
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -82,7 +88,9 @@ public class Parser {
             return;
         }
 
-        if (!matcher.match(name)) {
+        if (matcher.match(name)) {
+            matches += 1;
+        } else {
             list.add(name);
         }
     }

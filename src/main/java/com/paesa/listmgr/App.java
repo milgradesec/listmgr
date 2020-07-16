@@ -11,6 +11,7 @@ public class App {
 
         final ArrayList<String> lists = Config.read(args.config);
         final Parser parser = new Parser(lists);
+        
         parser.generate();
         parser.writeToFile(args.output);
     }

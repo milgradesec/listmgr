@@ -17,7 +17,9 @@ import java.util.Set;
 public class Parser {
     private final ArrayList<String> sources;
     private final Set<String> list = new HashSet<String>();
+
     private static HttpClient client = HttpClient.newHttpClient();
+    private Filter filter;
 
     public Parser(final ArrayList<String> sources) {
         this.sources = sources;
@@ -49,12 +51,12 @@ public class Parser {
         final String[] lines = body.split("\n");
         for (String line : lines) {
 
-            if (line.startsWith("#") || line.isEmpty()) {
+            if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
                 // System.out.println(line);
                 continue;
             }
 
-            // Remove inline comments
+            // Remove inline comments.
             if (line.contains("#")) {
                 final int pos = line.indexOf("#", 0);
                 line = line.substring(0, pos - 1);
@@ -63,7 +65,7 @@ public class Parser {
             // Remove all leading and trailing white spaces.
             line = line.strip();
 
-            // Split IP from Name
+            // Split IP from name
             final String[] splits = line.split(" ");
             if (splits.length == 2) {
                 list.add(splits[1]);

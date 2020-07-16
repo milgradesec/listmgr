@@ -19,9 +19,9 @@ public class Parser {
     private final Set<String> list = new HashSet<String>();
 
     private static HttpClient client = HttpClient.newHttpClient();
-    private Matcher matcher;
+    private final Matcher matcher;
 
-    public Parser(final ArrayList<String> sources, Matcher matcher) {
+    public Parser(final ArrayList<String> sources, final Matcher matcher) {
         this.sources = sources;
         this.matcher = matcher;
     }
@@ -76,7 +76,12 @@ public class Parser {
         }
     }
 
-    private void addToList(String name) {
+    private void addToList(final String name) {
+        if (matcher == null) {
+            list.add(name);
+            return;
+        }
+
         if (!matcher.match(name)) {
             list.add(name);
         }

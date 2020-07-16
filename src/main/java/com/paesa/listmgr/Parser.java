@@ -19,10 +19,11 @@ public class Parser {
     private final Set<String> list = new HashSet<String>();
 
     private static HttpClient client = HttpClient.newHttpClient();
-    private Filter filter;
+    private Matcher matcher;
 
-    public Parser(final ArrayList<String> sources) {
+    public Parser(final ArrayList<String> sources, Matcher matcher) {
         this.sources = sources;
+        this.matcher = matcher;
     }
 
     public void generate() {
@@ -68,8 +69,16 @@ public class Parser {
             // Split IP from name
             final String[] splits = line.split(" ");
             if (splits.length == 2) {
-                list.add(splits[1]);
+                addToList(splits[1]);
+            } else {
+                // System.out.println(line);
             }
+        }
+    }
+
+    private void addToList(String name) {
+        if (!matcher.match(name)) {
+            list.add(name);
         }
     }
 

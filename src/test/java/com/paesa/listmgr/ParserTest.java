@@ -9,8 +9,8 @@ public class ParserTest {
     public void testGenerate() {
         final ArrayList<String> lists = new ArrayList<String>();
         lists.add("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts");
-        
-        final Parser parser = new Parser(lists);
+
+        final Parser parser = new Parser(lists, null);
         parser.generate();
     }
 }

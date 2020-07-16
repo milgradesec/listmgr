@@ -34,3 +34,4 @@ out/
 
 ### Data ###
 *.list
+!deny.list

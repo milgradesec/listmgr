@@ -10,5 +10,5 @@ VOLUME /tmp
 ARG JAVA_OPTS
 ENV JAVA_OPTS=$JAVA_OPTS
 
-COPY --from=builder /home/gradle/src/build/libs/*.jar list-manager.jar
+COPY --from=builder /home/gradle/src/build/libs/list-manager.jar list-manager.jar
 ENTRYPOINT exec java $JAVA_OPTS -jar list-manager.jar

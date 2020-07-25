@@ -6,9 +6,6 @@ public class Args {
     @Parameter(names = { "--config", "-c" })
     public String config = "lists.conf";
 
-    @Parameter(names = { "--filter", "-f" })
-    public String filter;
-
     @Parameter(names = { "--output", "-o" })
     public String output = "blocklist.list";
 

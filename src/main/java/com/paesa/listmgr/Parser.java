@@ -19,12 +19,9 @@ public class Parser {
     private final Set<String> list = new HashSet<String>();
 
     private static HttpClient client = HttpClient.newHttpClient();
-    private final Matcher matcher;
-    private int matches;
 
-    public Parser(final ArrayList<String> sources, final Matcher matcher) {
+    public Parser(final ArrayList<String> sources) {
         this.sources = sources;
-        this.matcher = matcher;
     }
 
     public void generate() {
@@ -32,7 +29,6 @@ public class Parser {
             fetchAndParse(url);
         }
         System.out.println("Total size: " + list.size());
-        System.out.println("Filter matches: " + matches);
     }
 
     private void fetchAndParse(final String url) {
@@ -83,16 +79,7 @@ public class Parser {
     }
 
     private void addToList(final String name) {
-        if (matcher == null) {
-            list.add(name);
-            return;
-        }
-
-        if (matcher.match(name)) {
-            matches += 1;
-        } else {
-            list.add(name);
-        }
+        list.add(name);
     }
 
     public void writeToFile(final String file) {

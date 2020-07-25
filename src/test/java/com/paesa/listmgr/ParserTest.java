@@ -10,8 +10,7 @@ public class ParserTest {
         final ArrayList<String> lists = new ArrayList<String>();
         lists.add("https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts");
 
-        final Matcher matcher = new Matcher("src/test/resources/lists/deny.list");
-        final Parser parser = new Parser(lists, matcher);
+        final Parser parser = new Parser(lists);
         parser.generate();
     }
 }

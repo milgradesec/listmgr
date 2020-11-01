@@ -34,7 +34,7 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
 
     // https://mvnrepository.com/artifact/com.beust/jcommander
-    implementation 'com.beust:jcommander:1.78'
+    implementation 'com.beust:jcommander:1.80'
 
     implementation 'org.apache.commons:commons-lang3:3.1'
     

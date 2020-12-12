@@ -9,7 +9,7 @@ public class Config {
     /**
      * Reads configuration from a file.
      * 
-     * @param file Filename or full path.
+     * @param file filename or full path
      */
     public static ArrayList<String> read(final String file) {
         final ArrayList<String> lists = new ArrayList<String>();

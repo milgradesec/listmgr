@@ -12,18 +12,18 @@ public class Config {
      * @param file filename or full path
      */
     public static ArrayList<String> read(final String file) {
-        final ArrayList<String> lists = new ArrayList<String>();
+        ArrayList<String> lists = new ArrayList<String>();
 
         try {
-            final ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));
-            for (final String line : lines) {
+            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));
+            for (String line : lines) {
 
                 if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
                     continue;
                 }
                 lists.add(line);
             }
-        } catch (final Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

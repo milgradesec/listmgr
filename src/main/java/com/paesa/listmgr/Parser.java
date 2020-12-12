@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class Parser {
     private final ArrayList<String> sources;
-    private final Set<String> list = new HashSet<String>();
+    private Set<String> list = new HashSet<String>();
 
     private static HttpClient client = HttpClient.newHttpClient();
 
@@ -25,7 +25,7 @@ public class Parser {
     }
 
     public void generate() {
-        for (final String url : sources) {
+        for (String url : sources) {
             fetchAndParse(url);
         }
         System.out.println("Total size: " + list.size());

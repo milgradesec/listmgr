@@ -21,7 +21,7 @@ dependencies {
 }
 
 application {
-    mainClass = "com.paesa.listmgr.App"
+    mainClass = "com.paesa.listmgr.Main"
 }
 
 jacocoTestReport {

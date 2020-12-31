@@ -1,9 +1,11 @@
-
 plugins {
     id 'java-library'
     id 'application'
     id 'jacoco'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
+
+mainClassName = 'com.paesa.listmgr.Main'
 
 sourceCompatibility = '14'
 
@@ -14,14 +16,10 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
-    implementation 'com.beust:jcommander:1.80'
+    implementation 'com.beust:jcommander:1.78'
     implementation 'org.apache.commons:commons-lang3:3.1'
-    
-    testImplementation 'junit:junit:4.13'
-}
 
-application {
-    mainClass = "com.paesa.listmgr.Main"
+    testImplementation 'junit:junit:4.13'
 }
 
 jacocoTestReport {

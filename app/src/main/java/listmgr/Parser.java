@@ -1,4 +1,4 @@
-package com.paesa.listmgr;
+package listmgr;
 
 import java.io.FileWriter;
 import java.io.IOException;

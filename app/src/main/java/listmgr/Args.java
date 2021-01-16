@@ -1,4 +1,4 @@
-package com.paesa.listmgr;
+package listmgr;
 
 import com.beust.jcommander.Parameter;
 

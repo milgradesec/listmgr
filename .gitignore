@@ -48,3 +48,15 @@ out/
 *.list
 !deny.list
 lists.conf
+
+# Ignore Gradle build output directory
+build
+old/build.gradle
+old/gradlew
+old/gradlew.bat
+old/settings.gradle
+old/gradle/wrapper/gradle-wrapper.properties
+old/src/main/java/com/paesa/listmgr/Args.java
+old/src/main/java/com/paesa/listmgr/Config.java
+old/src/main/java/com/paesa/listmgr/Main.java
+old/src/main/java/com/paesa/listmgr/Parser.java

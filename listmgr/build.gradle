@@ -15,11 +15,12 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
-mainClassName = 'listmanager.Main'
+mainClassName = 'listmgr.App'
 
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()
+    // Use MavenCentral for resolving dependencies.
     mavenCentral()
 }
 
@@ -36,7 +37,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'listmanager.Main'
+    mainClass = 'listmgr.App'
 }
 
 jacocoTestReport {

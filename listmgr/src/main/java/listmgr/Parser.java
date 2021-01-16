@@ -1,4 +1,4 @@
-package listmanager;
+package listmgr;
 
 import java.io.FileWriter;
 import java.io.IOException;

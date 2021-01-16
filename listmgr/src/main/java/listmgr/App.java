@@ -1,10 +1,10 @@
-package listmanager;
+package listmgr;
 
 import java.util.ArrayList;
 
 import com.beust.jcommander.JCommander;
 
-public class Main {
+public class App {
     public static void main(final String[] argv) {
         Args args = new Args();
         JCommander.newBuilder().addObject(args).build().parse(argv);

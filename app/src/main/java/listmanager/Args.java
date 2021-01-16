@@ -1,4 +1,4 @@
-package listmgr;
+package listmanager;
 
 import com.beust.jcommander.Parameter;
 

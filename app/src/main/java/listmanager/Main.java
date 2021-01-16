@@ -1,4 +1,4 @@
-package listmgr;
+package listmanager;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package listmgr;
+package listmanager;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;

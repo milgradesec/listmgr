@@ -17,6 +17,8 @@ plugins {
 
 mainClassName = 'listmgr.App'
 
+sourceCompatibility = '1.8'
+
 repositories {
     // Use JCenter for resolving dependencies.
     jcenter()

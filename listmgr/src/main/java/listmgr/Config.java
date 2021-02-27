@@ -24,9 +24,10 @@ public class Config {
                 lists.add(line);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
+        System.out.println("Loaded lists from '" + file + "'");
         return lists;
     }
 }

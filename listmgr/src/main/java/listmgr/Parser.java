@@ -88,7 +88,7 @@ public class Parser {
                 fw.write(line + "\n");
             }
         } catch (final IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

@@ -10,8 +10,11 @@ public class App {
         JCommander.newBuilder().addObject(args).build().parse(argv);
 
         ArrayList<String> lists = Config.read(args.config);
-        Parser parser = new Parser(lists);
+        if (lists.size() == 0) {
+            return;
+        }
 
+        Parser parser = new Parser(lists);
         parser.generate();
         parser.writeToFile(args.output);
     }

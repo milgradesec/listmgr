@@ -66,14 +66,14 @@ public class Parser {
             // Split IP from name
             final String[] splits = line.split(" ");
             switch (splits.length) {
-                case 1:
-                    addToList(line);
-                    break;
-                case 2:
-                    addToList(splits[1]);
-                    break;
-                default:
-                    break;
+            case 1:
+                addToList(line);
+                break;
+            case 2:
+                addToList(splits[1]);
+                break;
+            default:
+                break;
             }
         }
     }

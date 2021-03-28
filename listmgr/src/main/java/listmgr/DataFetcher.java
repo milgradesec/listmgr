@@ -15,8 +15,12 @@ public class DataFetcher {
 
         try {
             System.out.println("Loading data from " + "[" + url + "]");
+
             final HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            return response.body().toString();
+            if (response.statusCode() == 200) {
+                return response.body().toString();
+            }
+            System.out.println("error: got status code !=200");
 
         } catch (final IOException e) {
             e.printStackTrace();

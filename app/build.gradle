@@ -38,6 +38,11 @@ application {
     mainClass = 'listmgr.App'
 }
 
+shadowJar {
+    archiveBaseName.set('list-manager')
+    minimize()
+}
+
 jacocoTestReport {
     reports {
         xml.enabled true

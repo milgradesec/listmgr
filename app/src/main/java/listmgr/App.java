@@ -6,7 +6,7 @@ import com.beust.jcommander.JCommander;
 
 public class App {
     public static void main(final String[] argv) {
-        CmdLineParser args = new CmdLineParser();
+        Args args = new Args();
         JCommander.newBuilder().addObject(args).build().parse(argv);
 
         ArrayList<String> lists = Configuration.read(args.config);

@@ -5,7 +5,7 @@ import com.beust.jcommander.Parameter;
 /**
  * Command line arguments
  */
-public class Args {
+public class CmdLineParser {
     @Parameter(names = { "-config" }, description = "File with lists to parse")
     public String config = "lists.conf";
 

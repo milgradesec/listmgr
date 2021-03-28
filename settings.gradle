@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'list-manager'
-include('listmgr')
+include('app')

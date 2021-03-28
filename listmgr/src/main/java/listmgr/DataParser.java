@@ -34,6 +34,7 @@ public class DataParser {
                 line = line.stripTrailing();
             }
             line = line.toLowerCase();
+            line = line.replaceAll("\r", "");
 
             p = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
             m = p.matcher(line);

@@ -16,8 +16,6 @@ plugins {
 mainClassName = 'listmgr.App'
 
 repositories {
-    // Use JCenter for resolving dependencies.
-    jcenter()
     // Use MavenCentral for resolving dependencies.
     mavenCentral()
 }

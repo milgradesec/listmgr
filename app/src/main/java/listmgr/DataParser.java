@@ -45,7 +45,7 @@ public class DataParser {
             }
 
             p = Pattern
-                    .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+                    .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
             m = p.matcher(line);
             if (m.matches()) {
                 addToList(m.group(1));

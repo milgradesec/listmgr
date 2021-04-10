@@ -15,6 +15,8 @@ plugins {
 
 mainClassName = 'listmgr.App'
 
+version = '1.0.0'
+
 repositories {
     // Use MavenCentral for resolving dependencies.
     mavenCentral()

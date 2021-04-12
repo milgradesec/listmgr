@@ -5,12 +5,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Configuration {
-
-    /**
-     * Reads configuration from a file.
-     * 
-     * @param file filename or full path
-     */
     public static ArrayList<String> read(final String file) {
         ArrayList<String> lists = new ArrayList<String>();
 
@@ -27,7 +21,7 @@ public class Configuration {
             System.out.println(e.getMessage());
         }
 
-        System.out.printf("Loaded %d lists from '%s'\n", lists.size(), file);
+        System.out.printf("Loaded %d lists from '%s'\n\n", lists.size(), file);
         return lists;
     }
 }

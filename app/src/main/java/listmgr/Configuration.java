@@ -18,7 +18,7 @@ public class Configuration {
                 lists.add(line);
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.printf("error: failed to read config from '%s': %s", file, e.toString());
         }
 
         System.out.printf("Loaded %d lists from '%s'\n\n", lists.size(), file);

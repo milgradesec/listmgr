@@ -21,7 +21,7 @@ public class Configuration {
             System.out.printf("error: failed to read config from '%s': %s", file, e.toString());
         }
 
-        System.out.printf("Loaded %d sources from '%s'\n\n", sources.size(), file);
+        System.out.printf("Loaded %d sources from '%s'\n", sources.size(), file);
         return sources;
     }
 }

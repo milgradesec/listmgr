@@ -27,7 +27,7 @@ public class Configuration {
             System.out.println(e.getMessage());
         }
 
-        System.out.println("Loaded lists from '" + file + "'");
+        System.out.printf("Loaded %d lists from '%s'\n", lists.size(), file);
         return lists;
     }
 }

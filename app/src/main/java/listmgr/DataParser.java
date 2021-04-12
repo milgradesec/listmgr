@@ -7,10 +7,6 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * DataParser retrieves and parses lists from sources and generates an unified
- * list
- */
 public class DataParser {
     public Set<String> list = new HashSet<String>();
 
@@ -44,8 +40,8 @@ public class DataParser {
                 continue;
             }
 
-            p = Pattern
-                    .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+            p = Pattern.compile(
+                    "^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
             m = p.matcher(line);
             if (m.matches()) {
                 addToList(m.group(1));
@@ -65,7 +61,7 @@ public class DataParser {
                 fw.write(line + "\n");
             }
         } catch (final IOException e) {
-            System.out.println(e.getMessage());
+            System.out.printf("error: failed to write data to file '%s': %s\n", file, e.toString());
         }
     }
 }

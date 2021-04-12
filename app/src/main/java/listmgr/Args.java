@@ -2,9 +2,6 @@ package listmgr;
 
 import com.beust.jcommander.Parameter;
 
-/**
- * Command line arguments.
- */
 public class Args {
     @Parameter(names = { "--config", "-c" }, description = "File with lists to parse")
     public String config = "lists.conf";

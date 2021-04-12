@@ -18,7 +18,7 @@ public class App {
         for (String list : lists) {
             String data = DataFetcher.fetch(list);
             int size = parser.parse(data);
-            System.out.printf("Added %d from [%s]\n", size, list);
+            System.out.printf("Added %d domains from [%s]\n", size, list);
         }
         parser.writeToFile(args.output);
         System.out.printf("Total list size: %d", parser.list.size());

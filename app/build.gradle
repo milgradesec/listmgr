@@ -30,7 +30,7 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
 
     // Used for command line parsing
-    implementation 'com.beust:jcommander:1.78'
+    implementation 'com.beust:jcommander:1.81'
 }
 
 application {

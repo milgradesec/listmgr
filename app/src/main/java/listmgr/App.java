@@ -21,6 +21,6 @@ public class App {
             System.out.printf("Added %d domains from [%s]\n", size, list);
         }
         parser.writeToFile(args.output);
-        System.out.printf("Total list size: %d", parser.list.size());
+        System.out.printf("Total list size: %d\n", parser.list.size());
     }
 }

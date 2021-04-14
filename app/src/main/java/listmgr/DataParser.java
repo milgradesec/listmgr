@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DataParser {
+
     public Set<String> list = new HashSet<String>();
 
     public int parse(final String data) {

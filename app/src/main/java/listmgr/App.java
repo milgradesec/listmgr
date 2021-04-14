@@ -5,12 +5,13 @@ import java.util.ArrayList;
 import com.beust.jcommander.JCommander;
 
 public class App {
+
     public static void main(final String[] argv) {
         Args args = new Args();
         JCommander.newBuilder().addObject(args).build().parse(argv);
 
         ArrayList<String> lists = Configuration.read(args.config);
-        if (lists.size() == 0) {
+        if (lists.isEmpty()) {
             return;
         }
 

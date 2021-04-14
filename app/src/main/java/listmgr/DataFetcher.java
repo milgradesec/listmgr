@@ -8,7 +8,8 @@ import java.net.http.HttpResponse;
 import java.net.http.HttpResponse.BodyHandlers;
 
 public class DataFetcher {
-    private static HttpClient client = HttpClient.newHttpClient();
+
+    private static final HttpClient client = HttpClient.newHttpClient();
 
     public static String fetch(final String url) {
         final HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
@@ -16,7 +17,7 @@ public class DataFetcher {
         try {
             final HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
             if (response.statusCode() == 200) {
-                return response.body().toString();
+                return response.body();
             }
             System.out.printf("error: failed to fetch [%s]: got status code != 200: %d\n", url, response.statusCode());
 

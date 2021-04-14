@@ -3,15 +3,16 @@ package listmgr;
 import com.beust.jcommander.Parameter;
 
 public class Args {
-    @Parameter(names = { "--config", "-c" }, description = "File with lists to parse")
+
+    @Parameter(names = {"--config", "-c"}, description = "File with lists to parse")
     public String config = "lists.conf";
 
-    @Parameter(names = { "--output", "-o" }, description = "Output file")
+    @Parameter(names = {"--output", "-o"}, description = "Output file")
     public String output = "blocklist.list";
 
-    @Parameter(names = { "--help", "-h" }, help = true)
+    @Parameter(names = {"--help", "-h"}, help = true)
     private boolean help;
 
-    @Parameter(names = { "--debug", "-d" }, description = "Enable detailed logging")
+    @Parameter(names = {"--debug", "-d"}, description = "Enable detailed logging")
     public boolean debug;
 }

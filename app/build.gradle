@@ -24,7 +24,7 @@ application {
 }
 
 shadowJar {
-    archiveBaseName.set('list-manager')
+    archiveBaseName.set('listmgr')
     minimize()
 }
 

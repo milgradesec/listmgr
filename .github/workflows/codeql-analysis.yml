@@ -34,7 +34,7 @@ jobs:
           distribution: adopt
 
       - name: Build
-        run: ./gradlew --no-daemon build
+        run: ./gradlew build
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1

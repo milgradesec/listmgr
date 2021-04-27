@@ -1,9 +1,9 @@
-# list-manager
+# listmgr
 
-![CI](https://github.com/milgradesec/list-manager/workflows/CI/badge.svg)
-[![CodeQL](https://github.com/milgradesec/list-manager/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/milgradesec/list-manager/actions/workflows/codeql-analysis.yml)
-[![codecov](https://codecov.io/gh/milgradesec/list-manager/branch/main/graph/badge.svg?token=Vw9zR2Qfcg)](https://codecov.io/gh/milgradesec/list-manager)
-![License](https://img.shields.io/github/license/milgradesec/list-manager)
+![CI](https://github.com/milgradesec/listmgr/workflows/CI/badge.svg)
+[![CodeQL](https://github.com/milgradesec/listmgr/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/milgradesec/listmgr/actions/workflows/codeql-analysis.yml)
+[![codecov](https://codecov.io/gh/milgradesec/listmgr/branch/main/graph/badge.svg?token=Vw9zR2Qfcg)](https://codecov.io/gh/milgradesec/listmgr)
+![License](https://img.shields.io/github/license/milgradesec/listmgr)
 
 A tool to generate a unified list of domains from different sources.
 

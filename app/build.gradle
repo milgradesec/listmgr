@@ -6,7 +6,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
-mainClassName = 'listmgr.App'
+mainClassName = 'com.github.milgradesec.listmgr.App'
 
 version = '1.0.0'
 
@@ -20,7 +20,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'listmgr.App'
+    mainClass = 'com.github.milgradesec.listmgr.App'
 }
 
 shadowJar {

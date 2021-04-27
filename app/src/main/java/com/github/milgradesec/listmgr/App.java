@@ -1,4 +1,4 @@
-package listmgr;
+package com.github.milgradesec.listmgr;
 
 import java.util.ArrayList;
 

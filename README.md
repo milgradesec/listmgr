@@ -5,13 +5,33 @@
 [![codecov](https://codecov.io/gh/milgradesec/listmgr/branch/main/graph/badge.svg?token=Vw9zR2Qfcg)](https://codecov.io/gh/milgradesec/listmgr)
 ![License](https://img.shields.io/github/license/milgradesec/listmgr)
 
-A tool to generate a unified list of domains from different sources.
+`listmgr` is a tool to generate a unified list of domains from different sources.
 
 ## Build
 
-    .\gradlew clean
-    .\gradlew build
+```shell
+.\gradlew build
+```
 
 ## Usage
 
-    java -jar listmgr.jar --config lists.conf --output blocklist.list
+Example configuration file:
+
+```ini
+##############
+# Lists.conf #
+##############
+
+# Some ads and tracking lists
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
+https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
+https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
+```
+
+Run `listmgr`:
+
+```shell
+java -jar listmgr.jar --config lists.conf --output blocklist.list
+```

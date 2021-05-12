@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     testImplementation 'junit:junit:4.13.2'
-    implementation 'com.beust:jcommander:1.81'
+    implementation 'commons-cli:commons-cli:1.4'
 }
 
 application {

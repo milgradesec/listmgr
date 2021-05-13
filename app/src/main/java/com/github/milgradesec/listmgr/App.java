@@ -12,9 +12,9 @@ public class App {
 
     public static void main(final String[] argv) throws ParseException {
         Options options = new Options();
-        options.addOption("c", "config", true, "File with lists to parse");
-        options.addOption("o", "output", true, "Output file");
-        options.addOption("h", "help", false, "Print this message");
+        options.addOption("c", "-config", true, "File with lists to parse");
+        options.addOption("o", "-output", true, "Output file");
+        options.addOption("h", "-help", false, "Print this message");
 
         CommandLineParser cmdParser = new DefaultParser();
         CommandLine cmd = cmdParser.parse(options, argv);

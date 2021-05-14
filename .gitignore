@@ -42,7 +42,7 @@ out/
 /.nb-gradle/
 
 ### VS Code ###
-.vscode/
+#.vscode/
 
 ### Data ###
 *.list

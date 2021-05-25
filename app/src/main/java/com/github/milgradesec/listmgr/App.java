@@ -1,5 +1,9 @@
 package com.github.milgradesec.listmgr;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.apache.commons.cli.CommandLine;
@@ -43,6 +47,15 @@ public class App {
         }
 
         parser.writeToFile(outputFile);
-        System.out.printf("Total list size: %d\n", parser.list.size());
+        System.out.printf("\nTotal list size: %d\n", parser.list.size());
+
+        Path path = Paths.get(outputFile);
+        long bytes;
+        try {
+            bytes = Files.size(path);
+            System.out.printf("File size: %,d KB\n", bytes / 1024);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

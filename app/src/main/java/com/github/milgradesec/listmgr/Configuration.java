@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Configuration {
 
     public static ArrayList<String> read(final String file) {
-        ArrayList<String> sources = new ArrayList<String>();
+        ArrayList<String> sources = new ArrayList<>();
 
         try {
             ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));

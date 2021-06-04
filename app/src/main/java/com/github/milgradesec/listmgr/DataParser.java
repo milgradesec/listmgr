@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class DataParser {
 
-    public Set<String> list = new HashSet<String>();
+    public Set<String> list = new HashSet<>();
 
     public int parse(final String data) {
         return parseResponseRegex(data);

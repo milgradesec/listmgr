@@ -27,11 +27,3 @@ shadowJar {
     archiveBaseName.set('listmgr')
     minimize()
 }
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-        html.enabled false
-    }
-}
-check.dependsOn jacocoTestReport

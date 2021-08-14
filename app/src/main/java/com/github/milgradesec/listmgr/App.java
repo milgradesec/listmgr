@@ -34,7 +34,7 @@ public class App {
             outputFile = cmd.getOptionValue("output");
         }
 
-        ArrayList<String> lists = Configuration.read(configFile);
+        ArrayList<String> lists = loadLists(configFile);
         if (lists.isEmpty()) {
             return;
         }
@@ -58,5 +58,24 @@ public class App {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList<String> loadLists(final String file) {
+        ArrayList<String> sources = new ArrayList<>();
+
+        try {
+            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));
+            for (String line : lines) {
+
+                if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
+                    continue;
+                }
+                sources.add(line);
+            }
+        } catch (IOException e) {
+            System.out.printf("error: failed to read config from '%s': %s\n", file, e.toString());
+        }
+
+        return sources;
     }
 }

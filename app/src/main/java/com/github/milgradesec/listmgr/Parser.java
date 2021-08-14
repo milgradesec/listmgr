@@ -7,10 +7,19 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class DataParser {
+public class Parser {
 
+    /**
+     * This hashset stores all parsed and valid domains without duplicates.
+     */
     public Set<String> list = new HashSet<>();
 
+    /**
+     * Parses a line to extract any valid domain name.
+     * 
+     * @param data
+     * @return
+     */
     public int parse(final String data) {
         return parseResponseRegex(data);
     }
@@ -52,11 +61,21 @@ public class DataParser {
         return size;
     }
 
+    /**
+     * Adds a new domain to the hashset.
+     * 
+     * @param name name to add
+     */
     private void addToList(final String name) {
         list.add(name);
     }
 
-    public void writeToFile(final String file) {
+    /**
+     * Writes all entries in the hashset to a file.
+     * 
+     * @param file file to write
+     */
+    public void flush(final String file) {
         try (FileWriter fw = new FileWriter(file)) {
             for (final String line : list) {
                 fw.write(line + "\n");

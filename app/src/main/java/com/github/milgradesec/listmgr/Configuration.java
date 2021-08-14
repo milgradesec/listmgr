@@ -22,8 +22,7 @@ public class Configuration {
         } catch (IOException e) {
             System.out.printf("error: failed to read config from '%s': %s\n", file, e.toString());
         }
-
-        System.out.printf("Loaded %d sources from '%s'\n\n", sources.size(), file);
+        
         return sources;
     }
 }

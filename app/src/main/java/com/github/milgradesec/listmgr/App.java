@@ -38,16 +38,17 @@ public class App {
         if (lists.isEmpty()) {
             return;
         }
+        System.out.printf("Loaded %d sources from '%s'\n", lists.size(), configFile);
 
-        DataParser parser = new DataParser();
+        Parser parser = new Parser();
         for (String list : lists) {
             String data = DataFetcher.fetch(list);
             int size = parser.parse(data);
             System.out.printf("Added %d domains from [%s]\n", size, list);
         }
 
-        parser.writeToFile(outputFile);
-        System.out.printf("\nTotal list size: %d\n", parser.list.size());
+        parser.flush(outputFile);
+        System.out.printf("Total list size: %d\n", parser.list.size());
 
         Path path = Paths.get(outputFile);
         long bytes;

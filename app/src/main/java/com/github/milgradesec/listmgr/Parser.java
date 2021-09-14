@@ -26,39 +26,44 @@ public class Parser {
 
     private int parseResponseRegex(final String data) {
         final String[] lines = data.split("\n");
-        Pattern p;
-        Matcher m;
         int size = 0;
 
         for (String line : lines) {
-            if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
-                continue;
-            }
-            if (line.contains("#")) {
-                final int pos = line.indexOf("#", 0);
-                line = line.substring(0, pos - 1);
-                line = line.stripTrailing();
-            }
-            line = line.toLowerCase();
-            line = line.replaceAll("\r", "");
-
-            p = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
-            m = p.matcher(line);
-            if (m.matches()) {
-                addToList(line);
-                size += 1;
-                continue;
-            }
-
-            p = Pattern.compile(
-                    "^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
-            m = p.matcher(line);
-            if (m.matches()) {
-                addToList(m.group(1));
+            if (parseLine(line)) {
                 size += 1;
             }
         }
         return size;
+    }
+
+    private boolean parseLine(String line) {
+        if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
+            return false;
+        }
+
+        if (line.contains("#")) {
+            final int pos = line.indexOf("#", 0);
+            line = line.substring(0, pos - 1);
+            line = line.stripTrailing();
+        }
+        line = line.toLowerCase();
+        line = line.replaceAll("\r", "");
+
+        Pattern p = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+        Matcher m = p.matcher(line);
+        if (m.matches()) {
+            addToList(line);
+            return true;
+        }
+
+        p = Pattern.compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+        m = p.matcher(line);
+        if (m.matches()) {
+            addToList(m.group(1));
+            return true;
+        }
+
+        return false;
     }
 
     /**

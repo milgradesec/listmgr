@@ -1,31 +1,37 @@
 package com.github.milgradesec.listmgr;
 
-import java.io.IOException;
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpResponse.BodyHandlers;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 
 public class Fetcher {
 
-    private static final HttpClient client = HttpClient.newHttpClient();
+    private static CloseableHttpClient client = HttpClients.createDefault();
 
-    public static String fetch(final String url) {
-        final HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).build();
+    public static String fetch(String url) {
+        HttpGet request = new HttpGet(URI.create(url));
 
-        try {
-            final HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-            if (response.statusCode() == 200) {
-                return response.body();
+        try (CloseableHttpResponse response = client.execute(request)) {
+            int status = response.getStatusLine().getStatusCode();
+            if (status != 200) {
+                System.out.printf("error: failed to fetch [%s]: got status code != 200: %d\n", url, status);
+                return "";
             }
-            System.out.printf("error: failed to fetch [%s]: got status code != 200: %d\n", url, response.statusCode());
 
-        } catch (final IOException e) {
-            System.out.printf("error: failed to fetch [%s]: %s\n", url, e.toString());
-        } catch (final InterruptedException e) {
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                return EntityUtils.toString(entity);
+            }
+
+        } catch (Exception e) {
             System.out.printf("error: failed to fetch [%s]: %s\n", url, e.toString());
         }
+
         return "";
     }
 }

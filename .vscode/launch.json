@@ -16,7 +16,7 @@
       "name": "Launch App",
       "request": "launch",
       "mainClass": "com.github.milgradesec.listmgr.App",
-      "projectName": "app",
+      "projectName": "listmgr",
       "args": "-config lists.conf"
     }
   ]

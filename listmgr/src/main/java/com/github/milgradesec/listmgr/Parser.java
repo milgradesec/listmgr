@@ -14,6 +14,11 @@ public class Parser {
      */
     public Set<String> list = new HashSet<>();
 
+    private Pattern rxDomain = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+
+    private Pattern rxIPDomain = Pattern
+            .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+
     /**
      * Parses a line to extract any valid domain name.
      * 
@@ -49,15 +54,13 @@ public class Parser {
         line = line.toLowerCase();
         line = line.replaceAll("\r", "");
 
-        Pattern p = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
-        Matcher m = p.matcher(line);
+        Matcher m = rxDomain.matcher(line);
         if (m.matches()) {
             addToList(line);
             return true;
         }
 
-        p = Pattern.compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
-        m = p.matcher(line);
+        m = rxIPDomain.matcher(line);
         if (m.matches()) {
             addToList(m.group(1));
             return true;

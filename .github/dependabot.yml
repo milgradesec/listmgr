@@ -2,7 +2,7 @@ version: 2
 
 updates:
   - package-ecosystem: "gradle"
-    directory: "/app"
+    directory: "/listmgr"
     schedule:
       interval: "daily"
 

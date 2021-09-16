@@ -27,5 +27,4 @@ application {
 
 shadowJar {
     archiveBaseName.set('listmgr')
-    minimize()
 }

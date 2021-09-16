@@ -31,7 +31,6 @@ public class Fetcher {
         } catch (Exception e) {
             System.out.printf("error: failed to fetch [%s]: %s\n", url, e.toString());
         }
-
         return "";
     }
 }

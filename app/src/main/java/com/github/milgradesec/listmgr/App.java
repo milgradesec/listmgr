@@ -42,7 +42,7 @@ public class App {
 
         Parser parser = new Parser();
         for (String list : lists) {
-            String data = DataFetcher.fetch(list);
+            String data = Fetcher.fetch(list);
             int size = parser.parse(data);
             System.out.printf("Added %d domains from [%s]\n", size, list);
         }

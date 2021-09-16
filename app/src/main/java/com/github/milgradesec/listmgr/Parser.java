@@ -17,8 +17,8 @@ public class Parser {
     /**
      * Parses a line to extract any valid domain name.
      * 
-     * @param data
-     * @return
+     * @param data data to parse
+     * @return number of new domains added
      */
     public int parse(final String data) {
         return parseResponseRegex(data);

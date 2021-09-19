@@ -27,4 +27,4 @@ jobs:
         uses: codecov/codecov-action@v2.1.0
 
       - name: Build
-        run: ./gradlew build --warn --warning-mode=all
+        run: ./gradlew build --info --warning-mode=all

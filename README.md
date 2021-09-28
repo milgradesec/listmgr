@@ -2,7 +2,7 @@
 
 ![CI](https://github.com/milgradesec/listmgr/workflows/CI/badge.svg)
 [![CodeQL](https://github.com/milgradesec/listmgr/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/milgradesec/listmgr/actions/workflows/codeql-analysis.yml)
-[![codecov](https://codecov.io/gh/milgradesec/listmgr/branch/main/graph/badge.svg?token=Vw9zR2Qfcg)](https://codecov.io/gh/milgradesec/listmgr)
+[![Codecov](https://codecov.io/gh/milgradesec/listmgr/branch/main/graph/badge.svg)](https://codecov.io/gh/milgradesec/listmgr)
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/milgradesec/listmgr)
 ![License](https://img.shields.io/github/license/milgradesec/listmgr)
 

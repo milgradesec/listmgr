@@ -19,17 +19,11 @@ public class Parser {
     private Pattern rxIPDomain = Pattern
             .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
 
-    /**
-     * Parses a line to extract any valid domain name.
-     * 
-     * @param data data to parse
-     * @return number of new domains added
-     */
     public int parse(final String data) {
-        return parseResponseRegex(data);
+        return parseResponse(data);
     }
 
-    private int parseResponseRegex(final String data) {
+    private int parseResponse(final String data) {
         final String[] lines = data.split("\n");
         int size = 0;
 

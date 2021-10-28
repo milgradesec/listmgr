@@ -31,7 +31,7 @@ https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
 https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 ```
 
-Run `listmgr`:
+Run `listmgr`
 
 ```shell
 java -jar listmgr.jar --config lists.conf --output blocklist.list

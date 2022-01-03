@@ -1,12 +1,10 @@
-package listmgr;
+package com.github.milgradesec.listmgr;
 
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import com.github.milgradesec.listmgr.Parser;
 
 import org.junit.Test;
 

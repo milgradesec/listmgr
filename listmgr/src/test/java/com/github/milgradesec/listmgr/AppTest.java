@@ -1,10 +1,8 @@
-package listmgr;
+package com.github.milgradesec.listmgr;
 
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-
-import com.github.milgradesec.listmgr.App;
 
 import org.junit.Test;
 

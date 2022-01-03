@@ -21,10 +21,10 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      # - name: Test
-      #   run: |
-      #     ./gradlew check
-      #     ./gradlew jacocoTestReport
+      - name: Test
+        run: |
+          ./gradlew check
+          ./gradlew jacocoTestReport
 
-      # - name: Upload coverage to Codecov
-      #   uses: codecov/codecov-action@v2.1.0
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2

@@ -1,5 +1,6 @@
 plugins {
     id 'application'
+    id 'jacoco'
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
@@ -21,3 +22,11 @@ dependencies {
 shadowJar {
     archiveBaseName.set('listmgr')
 }
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = false
+    }
+}
+check.dependsOn jacocoTestReport

@@ -83,7 +83,7 @@ public class Parser {
                 fw.write(line + "\n");
             }
         } catch (final IOException e) {
-            System.out.printf("error: failed to write data to file '%s': %s\n", file, e.toString());
+            System.out.printf("ERR: failed to write data to file '%s': %s\n", file, e.toString());
         }
     }
 }

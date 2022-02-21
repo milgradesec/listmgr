@@ -19,7 +19,7 @@ public class Fetcher {
         try (CloseableHttpResponse response = client.execute(request)) {
             int status = response.getStatusLine().getStatusCode();
             if (status != 200) {
-                System.out.printf("error: failed to fetch [%s]: got status code != 200: %d\n", url, status);
+                System.out.printf("ERR: failed to fetch [%s]: got status code != 200: %d\n", url, status);
                 return "";
             }
 
@@ -29,7 +29,7 @@ public class Fetcher {
             }
 
         } catch (Exception e) {
-            System.out.printf("error: failed to fetch [%s]: %s\n", url, e.toString());
+            System.out.printf("ERR: failed to fetch [%s]: %s\n", url, e.toString());
         }
         return "";
     }

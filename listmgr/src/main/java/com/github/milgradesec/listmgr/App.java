@@ -38,23 +38,23 @@ public class App {
         if (lists.isEmpty()) {
             return;
         }
-        System.out.printf("Loaded %d sources from '%s'\n", lists.size(), configFile);
+        System.out.printf("INF: Loaded %d sources from '%s'\n", lists.size(), configFile);
 
         Parser parser = new Parser();
         for (String list : lists) {
             String data = Fetcher.fetch(list);
             int size = parser.parse(data);
-            System.out.printf("Added %d domains from [%s]\n", size, list);
+            System.out.printf("INF: Added %d domains from [%s]\n", size, list);
         }
 
         parser.flush(outputFile);
-        System.out.printf("Total list size: %d\n", parser.list.size());
+        System.out.printf("INF: Total list size: %d\n", parser.list.size());
 
         Path path = Paths.get(outputFile);
         long bytes;
         try {
             bytes = Files.size(path);
-            System.out.printf("File size: %,d KB\n", bytes / 1024);
+            System.out.printf("INF: File size: %,d KB\n", bytes / 1024);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class App {
                 sources.add(line);
             }
         } catch (IOException e) {
-            System.out.printf("error: failed to read config from '%s': %s\n", file, e.toString());
+            System.out.printf("ERR: failed to read config from '%s': %s\n", file, e.toString());
         }
 
         return sources;

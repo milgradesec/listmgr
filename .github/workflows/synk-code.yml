@@ -16,6 +16,5 @@ jobs:
         uses: snyk/actions/gradle@master
         with:
           args: --file=listmgr/build.gradle
-          command: monitor
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}

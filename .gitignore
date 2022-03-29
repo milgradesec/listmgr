@@ -48,3 +48,6 @@ lists.conf
 
 # Ignore Gradle build output directory
 build
+
+# Snyk
+.dccache

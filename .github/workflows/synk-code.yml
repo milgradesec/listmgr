@@ -14,7 +14,15 @@ jobs:
         
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/gradle@master
+        continue-on-error: true
         with:
-          args: --file=listmgr/build.gradle
+          args: |
+            --file=listmgr/build.gradle
+            --sarif-file-output=snyk.sarif
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+      - name: Upload result to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: snyk.sarif

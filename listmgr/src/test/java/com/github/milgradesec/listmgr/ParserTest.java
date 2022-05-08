@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import org.junit.Test;
 
 public class ParserTest {
-         
+
     @Test
     public void testParse() throws IOException {
         Parser parser = new Parser();

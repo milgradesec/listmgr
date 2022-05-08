@@ -11,15 +11,16 @@ import org.apache.http.util.EntityUtils;
 
 public class Fetcher {
 
-    private static CloseableHttpClient client = HttpClients.createDefault();
+    private static final CloseableHttpClient client = HttpClients.createDefault();
 
     public static String fetch(String url) {
         HttpGet request = new HttpGet(URI.create(url));
 
-        try (CloseableHttpResponse response = client.execute(request)) {
+        try ( CloseableHttpResponse response = client.execute(request)) {
             int status = response.getStatusLine().getStatusCode();
             if (status != 200) {
-                System.out.printf("ERR: failed to fetch [%s]: got status code != 200: %d\n", url, status);
+                System.out.printf("ERR: failed to fetch [%s]: got status code != 200: %d\n",
+                        url, status);
                 return "";
             }
 
@@ -29,7 +30,8 @@ public class Fetcher {
             }
 
         } catch (Exception e) {
-            System.out.printf("ERR: failed to fetch [%s]: %s\n", url, e.toString());
+            System.out.printf("ERR: failed to fetch [%s]: %s\n", url,
+                    e.toString());
         }
         return "";
     }

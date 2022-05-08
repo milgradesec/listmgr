@@ -38,7 +38,8 @@ public class App {
         if (lists.isEmpty()) {
             return;
         }
-        System.out.printf("INF: Loaded %d sources from '%s'\n", lists.size(), configFile);
+        System.out.printf("INF: Loaded %d sources from '%s'\n", lists.size(),
+                configFile);
 
         Parser parser = new Parser();
         for (String list : lists) {
@@ -73,7 +74,8 @@ public class App {
                 sources.add(line);
             }
         } catch (IOException e) {
-            System.out.printf("ERR: failed to read config from '%s': %s\n", file, e.toString());
+            System.out.printf("ERR: failed to read config from '%s': %s\n",
+                    file, e.toString());
         }
 
         return sources;

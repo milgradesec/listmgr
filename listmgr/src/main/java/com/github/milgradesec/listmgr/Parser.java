@@ -14,9 +14,9 @@ public class Parser {
      */
     public Set<String> list = new HashSet<>();
 
-    private Pattern rxDomain = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
+    private final Pattern rxDomain = Pattern.compile("^([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
 
-    private Pattern rxIPDomain = Pattern
+    private final Pattern rxIPDomain = Pattern
             .compile("^[0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}[.][0-9]{1,3}\\s+([a-z0-9][a-z0-9.-]*[.][a-z]{2,})$");
 
     public int parse(final String data) {
@@ -65,7 +65,7 @@ public class Parser {
 
     /**
      * Adds a new domain to the hashset.
-     * 
+     *
      * @param name name to add
      */
     private void addToList(final String name) {
@@ -74,16 +74,17 @@ public class Parser {
 
     /**
      * Writes all entries in the hashset to a file.
-     * 
+     *
      * @param file file to write
      */
     public void flush(final String file) {
-        try (FileWriter fw = new FileWriter(file)) {
+        try ( FileWriter fw = new FileWriter(file)) {
             for (final String line : list) {
                 fw.write(line + "\n");
             }
         } catch (final IOException e) {
-            System.out.printf("ERR: failed to write data to file '%s': %s\n", file, e.toString());
+            System.out.printf("ERR: failed to write data to file '%s': %s\n",
+                    file, e.toString());
         }
     }
 }

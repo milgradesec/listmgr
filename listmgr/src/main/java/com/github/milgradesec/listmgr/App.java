@@ -12,7 +12,11 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class App {
+    private static final Logger logger = LogManager.getLogger();
 
     public static void main(final String[] argv) throws ParseException {
         Options options = new Options();
@@ -38,24 +42,23 @@ public class App {
         if (lists.isEmpty()) {
             return;
         }
-        System.out.printf("INF: Loaded %d sources from '%s'\n", lists.size(),
-                configFile);
+        logger.info("Loaded {} sources from {}", lists.size(), configFile);
 
         Parser parser = new Parser();
         for (String list : lists) {
             String data = Fetcher.fetch(list);
             int size = parser.parse(data);
-            System.out.printf("INF: Added %d domains from [%s]\n", size, list);
+            logger.info("Added {} unique domains from {}", size, list);
         }
 
         parser.flush(outputFile);
-        System.out.printf("INF: Total list size: %d\n", parser.list.size());
+        logger.info("Total list size: {}", parser.list.size());
 
         Path path = Paths.get(outputFile);
         long bytes;
         try {
             bytes = Files.size(path);
-            System.out.printf("INF: File size: %,d KB\n", bytes / 1024);
+            logger.info("File size: {} KB", bytes / 1024);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -74,8 +77,7 @@ public class App {
                 sources.add(line);
             }
         } catch (IOException e) {
-            System.out.printf("ERR: failed to read config from '%s': %s\n",
-                    file, e.toString());
+            logger.error("failed to read config from {}: {}", file, e.toString());
         }
 
         return sources;

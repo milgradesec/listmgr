@@ -7,7 +7,11 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 public class Parser {
+    private static final Logger logger = LogManager.getLogger();
 
     /**
      * This hashset stores all parsed and valid domains without duplicates.
@@ -78,13 +82,12 @@ public class Parser {
      * @param file file to write
      */
     public void flush(final String file) {
-        try ( FileWriter fw = new FileWriter(file)) {
+        try (FileWriter fw = new FileWriter(file)) {
             for (final String line : list) {
                 fw.write(line + "\n");
             }
         } catch (final IOException e) {
-            System.out.printf("ERR: failed to write data to file '%s': %s\n",
-                    file, e.toString());
+            logger.error("failed to write data to file '{}': {}", file, e.toString());
         }
     }
 }

@@ -3,6 +3,7 @@ package com.github.milgradesec.listmgr;
 import java.net.URI;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -23,18 +24,17 @@ public class Fetcher {
         try (CloseableHttpResponse response = client.execute(request)) {
             int status = response.getStatusLine().getStatusCode();
             if (status != 200) {
-                logger.error("failed to fetch '{}': got status code != 200: {}",
-                        url, status);
-                return "";
+                throw new HttpException("status code != 200: " + status);
             }
 
             HttpEntity entity = response.getEntity();
-            if (entity != null) {
-                return EntityUtils.toString(entity);
+            if (entity == null) {
+                throw new HttpException("response body is empty");
             }
+            return EntityUtils.toString(entity);
 
         } catch (Exception e) {
-            logger.error("failed to fetch '{}': {}", url, e.toString());
+            logger.error("Failed to fetch '{}': {}", url, e.getMessage());
         }
         return "";
     }

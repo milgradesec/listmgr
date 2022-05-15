@@ -44,10 +44,8 @@ out/
 ### Data ###
 *.list
 !deny.list
-lists.conf
+sources.conf
 
 # Ignore Gradle build output directory
 build
 
-# Snyk
-.dccache

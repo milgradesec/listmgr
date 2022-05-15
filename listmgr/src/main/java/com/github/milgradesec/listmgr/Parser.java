@@ -68,7 +68,7 @@ public class Parser {
     }
 
     /**
-     * Adds a new domain to the hashset.
+     * Adds a new entry to the hashset.
      *
      * @param name name to add
      */

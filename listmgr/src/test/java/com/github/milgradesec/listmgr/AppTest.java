@@ -9,8 +9,8 @@ import org.junit.Test;
 public class AppTest {
 
     @Test
-    public void testLoadLists() {
-        ArrayList<String> sources = App.loadLists("src/test/resources/sources.conf");
+    public void testLoadSourcesFromFile() {
+        ArrayList<String> sources = App.loadSourcesFromFile("src/test/resources/sources.conf");
         assertEquals(30, sources.size());
     }
 }

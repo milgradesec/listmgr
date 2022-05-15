@@ -20,59 +20,60 @@ import org.apache.logging.log4j.LogManager;
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class.getSimpleName());
 
+    private static final String defaultSourcesFile = "sources.conf";
+    private static final String defaultOutputFile = "out.list";
+
     public static void main(final String[] argv) throws ParseException {
         Configurator.setRootLevel(Level.DEBUG);
 
         Options options = new Options();
-        options.addOption("c", "config", true, "File with lists to parse");
-        options.addOption("o", "output", true, "Output file");
-        options.addOption("h", "help", false, "Print this message");
+        options.addOption("s", "sources", true, "Input file with urls to download and parse.");
+        options.addOption("o", "output", true, "Output file.");
+        options.addOption("h", "help", false, "Prints this message.");
 
         CommandLineParser cmdParser = new DefaultParser();
         CommandLine cmd = cmdParser.parse(options, argv);
 
-        String configFile = "lists.conf";
-        String outputFile = "blocklist.list";
+        // String configFile = "sources.conf";
+        // String outputFile = "blocklist.list";
 
-        if (cmd.hasOption("config")) {
-            configFile = cmd.getOptionValue("config");
-        }
+        // if (cmd.hasOption("sources")) {
+        // configFile = cmd.getOptionValue("sources");
+        // }
 
-        if (cmd.hasOption("output")) {
-            outputFile = cmd.getOptionValue("output");
-        }
+        // if (cmd.hasOption("output")) {
+        // outputFile = cmd.getOptionValue("output");
+        // }
 
-        ArrayList<String> lists = loadLists(configFile);
-        if (lists.isEmpty()) {
+        logger.info("No sources file specified, using default: '{}'", defaultSourcesFile);
+        ArrayList<String> sources = loadSourcesFromFile(defaultSourcesFile);
+        if (sources.isEmpty()) {
+            logger.error("No valid sources found on '{}'", defaultSourcesFile);
             return;
         }
-        logger.info("Loaded {} sources from {}", lists.size(), configFile);
+        logger.info("Loaded {} sources from '{}'", sources.size(), defaultSourcesFile);
 
         Parser parser = new Parser();
-        for (String list : lists) {
+        for (String list : sources) {
             String data = Fetcher.fetch(list);
             int size = parser.parse(data);
-            logger.info("Added {} unique domains from {}", size, list);
+            logger.info("Added {} unique domains from '{}'", size, list);
         }
+        parser.flush(defaultOutputFile);
 
-        parser.flush(outputFile);
+        int size = parser.list.size();
+        if (size == 0) {
+            logger.error("Found 0 valid domains from sources, exiting...");
+            return;
+        }
         logger.info("Total list size: {}", parser.list.size());
-
-        Path path = Paths.get(outputFile);
-        long bytes;
-        try {
-            bytes = Files.size(path);
-            logger.info("File size: {} KB", bytes / 1024);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
-    public static ArrayList<String> loadLists(final String file) {
+    public static ArrayList<String> loadSourcesFromFile(final String fileName) {
         ArrayList<String> sources = new ArrayList<>();
 
         try {
-            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(file)));
+            ArrayList<String> lines = new ArrayList<>(Files.readAllLines(Paths.get(fileName)));
             for (String line : lines) {
 
                 if (line.startsWith("#") || line.isEmpty() || line.isBlank()) {
@@ -81,7 +82,7 @@ public class App {
                 sources.add(line);
             }
         } catch (IOException e) {
-            logger.error("failed to read config from {}: {}", file, e.toString());
+            logger.error("Failed to read sources from '{}': {}", fileName, e.toString());
         }
 
         return sources;

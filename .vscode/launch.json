@@ -1,20 +1,18 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "java",
-      "name": "Launch Current File",
-      "request": "launch",
-      "mainClass": "${file}",
-      "args": "-config lists.conf"
-    },
-    {
-      "type": "java",
-      "name": "Launch App",
-      "request": "launch",
-      "mainClass": "com.github.milgradesec.listmgr.App",
-      "projectName": "listmgr",
-      "args": "-config lists.conf"
-    }
-  ]
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "com.github.milgradesec.listmgr.App",
+            "projectName": "listmgr-listmgr"
+        }
+    ]
 }

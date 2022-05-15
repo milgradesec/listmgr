@@ -13,12 +13,16 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 
 public class App {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(App.class.getSimpleName());
 
     public static void main(final String[] argv) throws ParseException {
+        Configurator.setRootLevel(Level.DEBUG);
+
         Options options = new Options();
         options.addOption("c", "config", true, "File with lists to parse");
         options.addOption("o", "output", true, "Output file");

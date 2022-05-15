@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
 public class Fetcher {
-    private static final Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger(Fetcher.class.getSimpleName());
 
     private static final CloseableHttpClient client = HttpClients.createDefault();
 

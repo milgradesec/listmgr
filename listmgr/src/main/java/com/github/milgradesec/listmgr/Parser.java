@@ -31,7 +31,7 @@ public class Parser {
         final String[] lines = data.split("\n");
         int size = 0;
 
-        for (String line : lines) {
+        for (final String line : lines) {
             if (parseLine(line)) {
                 size += 1;
             }

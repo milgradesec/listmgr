@@ -79,9 +79,10 @@ public class Parser {
     /**
      * Writes all entries in the hashset to a file.
      *
-     * @param file file to write
+     * @param file     file to write
+     * @param compress compress file with gzip
      */
-    public void flush(final String file) {
+    public void flush(final String file, final Boolean compress) {
         try (FileWriter fw = new FileWriter(file)) {
             for (final String line : list) {
                 fw.write(line + "\n");

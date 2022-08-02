@@ -25,31 +25,37 @@ public class App {
         Configurator.setRootLevel(Level.DEBUG);
 
         Options options = new Options();
-        options.addOption("s", "sources", true, "Input file with urls to download and parse.");
+        options.addOption("i", "input", true, "Input file with urls to download and parse.");
         options.addOption("o", "output", true, "Output file.");
+        // options.addOption("c", "compress", false, "Compress output file with gzip.");
         options.addOption("h", "help", false, "Prints this message.");
 
         CommandLineParser cmdParser = new DefaultParser();
         CommandLine cmd = cmdParser.parse(options, argv);
 
-        // String configFile = "sources.conf";
-        // String outputFile = "blocklist.list";
+        String src = "";
+        String dst = "";
 
-        // if (cmd.hasOption("sources")) {
-        // configFile = cmd.getOptionValue("sources");
-        // }
+        if (cmd.hasOption("input")) {
+            src = cmd.getOptionValue("input");
+        } else {
+            logger.info("No input file specified, using default: '{}'", defaultSourcesFile);
+            src = defaultSourcesFile;
+        }
 
-        // if (cmd.hasOption("output")) {
-        // outputFile = cmd.getOptionValue("output");
-        // }
+        if (cmd.hasOption("output")) {
+            dst = cmd.getOptionValue("output");
+        } else {
+            logger.info("No output file specified, using default: '{}'", defaultOutputFile);
+            dst = defaultSourcesFile;
+        }
 
-        logger.info("No sources file specified, using default: '{}'", defaultSourcesFile);
-        ArrayList<String> sources = loadSourcesFromFile(defaultSourcesFile);
+        ArrayList<String> sources = loadSourcesFromFile(src);
         if (sources.isEmpty()) {
-            logger.error("No valid sources found on '{}'", defaultSourcesFile);
+            logger.error("No valid sources found on '{}'", src);
             return;
         }
-        logger.info("Loaded {} sources from '{}'", sources.size(), defaultSourcesFile);
+        logger.info("Loaded {} sources from '{}'", sources.size(), src);
 
         Parser parser = new Parser();
         for (String list : sources) {
@@ -57,11 +63,11 @@ public class App {
             int size = parser.parse(data);
             logger.info("Added {} unique domains from '{}'", size, list);
         }
-        parser.flush(defaultOutputFile);
+        parser.flush(dst, false);
 
         int size = parser.list.size();
         if (size == 0) {
-            logger.error("Found 0 valid domains from sources, exiting...");
+            logger.error("Found no valid domains from sources, exiting...");
             return;
         }
         logger.info("Total list size: {}", parser.list.size());

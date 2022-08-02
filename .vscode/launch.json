@@ -12,7 +12,13 @@
             "name": "Launch App",
             "request": "launch",
             "mainClass": "com.github.milgradesec.listmgr.App",
-            "projectName": "listmgr-listmgr"
+            "projectName": "listmgr-listmgr",
+            "args": [
+                "--input",
+                "sources.conf",
+                "--output",
+                "blocklist"
+            ]
         }
     ]
 }

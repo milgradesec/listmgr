@@ -34,5 +34,5 @@ https://raw.githubusercontent.com/AdAway/adaway.github.io/master/hosts.txt
 Run `listmgr`
 
 ```shell
-java -jar listmgr.jar --config lists.conf --output blocklist.list
+java -jar listmgr.jar --input sources.conf --output blocklist.list
 ```

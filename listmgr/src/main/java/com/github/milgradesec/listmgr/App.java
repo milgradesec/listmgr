@@ -27,7 +27,6 @@ public class App {
         Options options = new Options();
         options.addOption("i", "input", true, "Input file with urls to download and parse.");
         options.addOption("o", "output", true, "Output file.");
-        // options.addOption("c", "compress", false, "Compress output file with gzip.");
         options.addOption("h", "help", false, "Prints this message.");
 
         CommandLineParser cmdParser = new DefaultParser();
@@ -63,7 +62,7 @@ public class App {
             int size = parser.parse(data);
             logger.info("Added {} unique domains from '{}'", size, list);
         }
-        parser.flush(dst, false);
+        parser.flush(dst);
 
         int size = parser.list.size();
         if (size == 0) {

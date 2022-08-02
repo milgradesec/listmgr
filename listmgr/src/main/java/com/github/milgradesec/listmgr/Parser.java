@@ -82,7 +82,7 @@ public class Parser {
      * @param file     file to write
      * @param compress compress file with gzip
      */
-    public void flush(final String file, final Boolean compress) {
+    public void flush(final String file) {
         try (FileWriter fw = new FileWriter(file)) {
             for (final String line : list) {
                 fw.write(line + "\n");

@@ -46,7 +46,7 @@ public class App {
             dst = cmd.getOptionValue("output");
         } else {
             logger.info("No output file specified, using default: '{}'", defaultOutputFile);
-            dst = defaultSourcesFile;
+            dst = defaultOutputFile;
         }
 
         ArrayList<String> sources = loadSourcesFromFile(src);

@@ -4,9 +4,9 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/listmgr"
     schedule:
-      interval: "daily"
+      interval: "weekly"
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
